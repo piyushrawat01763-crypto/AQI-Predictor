@@ -1,4 +1,4 @@
-# AQI Predictor (Beginner Project)
+# AQI Predictor 
 
 ##  Project Overview
 
