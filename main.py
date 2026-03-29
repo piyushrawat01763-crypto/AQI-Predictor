@@ -43,3 +43,37 @@ print(data.isnull().sum())
 
 data = data.fillna(data.mean(numeric_only=True))
 print("\nMissing values handled!\n")
+# ============================================
+# Step 5: Select Features and Target
+# ============================================
+
+features = ['PM2.5', 'PM10', 'NO2']
+target = 'AQI'
+
+# Validate columns
+for col in features + [target]:
+    if col not in data.columns:
+        print(f"Column '{col}' not found in dataset.")
+        exit()
+
+X = data[features]
+y = data[target]
+
+# ============================================
+# Step 6: Split Data
+# ============================================
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+print("\nData split completed!")
+print("Training data size:", len(X_train))
+print("Testing data size:", len(X_test))
+
+# ============================================
+# Step 7: Create Model
+# ============================================
+
+model = LinearRegression()
+print("\nModel created!")
