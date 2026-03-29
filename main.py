@@ -22,3 +22,18 @@ except Exception as e:
     print("Error loading dataset. Check file name/path.\n")
     print(e)
     exit()
+# ============================================
+# Step 3: Explore Dataset
+# ============================================
+
+print("First 5 rows:\n")
+print(data.head())
+
+print("\nColumns in dataset:\n")
+print(data.columns)
+
+print("\nDataset info:\n")
+print(data.info())
+
+print("\nChecking missing values:\n")
+print(data.isnull().sum())
