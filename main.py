@@ -11,6 +11,7 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
+
 # ============================================
 # Step 2: Load Dataset
 # ============================================
@@ -22,6 +23,7 @@ except Exception as e:
     print("Error loading dataset. Check file name/path.\n")
     print(e)
     exit()
+    
 # ============================================
 # Step 3: Explore Dataset
 # ============================================
@@ -37,12 +39,14 @@ print(data.info())
 
 print("\nChecking missing values:\n")
 print(data.isnull().sum())
+
 # ============================================
 # Step 4: Handle Missing Values
 # ============================================
 
 data = data.fillna(data.mean(numeric_only=True))
 print("\nMissing values handled!\n")
+
 # ============================================
 # Step 5: Select Features and Target
 # ============================================
@@ -77,12 +81,14 @@ print("Testing data size:", len(X_test))
 
 model = LinearRegression()
 print("\nModel created!")
+
 # ============================================
 # Step 8: Train Model
 # ============================================
 
 model.fit(X_train, y_train)
 print("\nModel training completed!")
+
 # ============================================
 # Step 9: Predictions
 # ============================================
@@ -104,3 +110,14 @@ print("\nModel Evaluation:")
 print("MSE:", mse)
 print("RMSE:", rmse)
 print("Accuracy (R^2 score):", model.score(X_test, y_test))
+
+# ============================================
+# Step 11: Visualization
+# ============================================
+
+plt.figure()
+plt.scatter(y_test, predictions)
+plt.xlabel("Actual AQI")
+plt.ylabel("Predicted AQI")
+plt.title("Actual vs Predicted AQI")
+plt.show()
