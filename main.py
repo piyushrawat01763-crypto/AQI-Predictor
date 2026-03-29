@@ -83,3 +83,24 @@ print("\nModel created!")
 
 model.fit(X_train, y_train)
 print("\nModel training completed!")
+# ============================================
+# Step 9: Predictions
+# ============================================
+
+predictions = model.predict(X_test)
+
+print("\nSample Predictions:\n")
+for i in range(min(5, len(y_test))):
+    print(f"Actual: {y_test.iloc[i]}  |  Predicted: {predictions[i]}")
+
+# ============================================
+# Step 10: Evaluation
+# ============================================
+
+mse = mean_squared_error(y_test, predictions)
+rmse = np.sqrt(mse)
+
+print("\nModel Evaluation:")
+print("MSE:", mse)
+print("RMSE:", rmse)
+print("Accuracy (R^2 score):", model.score(X_test, y_test))
