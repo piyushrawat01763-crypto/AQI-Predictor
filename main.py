@@ -37,3 +37,9 @@ print(data.info())
 
 print("\nChecking missing values:\n")
 print(data.isnull().sum())
+# ============================================
+# Step 4: Handle Missing Values
+# ============================================
+
+data = data.fillna(data.mean(numeric_only=True))
+print("\nMissing values handled!\n")
