@@ -121,3 +121,37 @@ plt.xlabel("Actual AQI")
 plt.ylabel("Predicted AQI")
 plt.title("Actual vs Predicted AQI")
 plt.show()
+
+# ============================================
+# Step 12: User Input Prediction
+# ============================================
+
+print("\n--- AQI Prediction System ---")
+
+try:
+    pm25 = float(input("Enter PM2.5 value: "))
+    pm10 = float(input("Enter PM10 value: "))
+    no2 = float(input("Enter NO2 value: "))
+
+    user_data = pd.DataFrame([[pm25, pm10, no2]], columns=features)
+
+    predicted_aqi = model.predict(user_data)
+    print("\nPredicted AQI:", predicted_aqi[0])
+
+except Exception as e:
+    print("Invalid input! Please enter numbers only.")
+    print(e)
+
+# ============================================
+# Step 13: Save Model
+# ============================================
+
+try:
+    joblib.dump(model, "aqi_model.pkl")
+    print("\nModel saved as 'aqi_model.pkl'")
+except Exception as e:
+    print("Error saving model:", e)
+
+# ============================================
+# END
+# ============================================
