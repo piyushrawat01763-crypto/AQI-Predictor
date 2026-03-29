@@ -77,3 +77,9 @@ print("Testing data size:", len(X_test))
 
 model = LinearRegression()
 print("\nModel created!")
+# ============================================
+# Step 8: Train Model
+# ============================================
+
+model.fit(X_train, y_train)
+print("\nModel training completed!")
